@@ -1,0 +1,59 @@
+<!-- @format -->
+<!-- @format -->
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+		<title>{% block title %}Home{% endblock %}</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+			<div class="container">
+				<a class="navbar-brand font-weight-bold" href="/"></a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbar">
+					<div class="navbar-nav ml-auto">
+						{% if user.is_authenticated %}
+						<a class="nav-item nav-link" href="/">Home</a>
+						<a class="nav-item nav-link" href="/student-profile"
+							>Academic Progress</a
+						>
+						<a class="nav-item nav-link text-danger" href="/logout">Logout</a>
+						{% else %}
+						<a class="nav-item nav-link" href="/login">Login</a>
+						<a class="nav-item nav-link" href="/sign-up">Sign Up</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		{% with messages = get_flashed_messages(with_categories=true) %} {% if
+		messages %} {% for category, message in messages %}
+		<div
+			class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
+			role="alert">
+			{{ message }}
+			<button type="button" class="close" data-dismiss="alert">
+				<span>&times;</span>
+			</button>
+		</div>
+		{% endfor %} {% endif %} {% endwith %}
+
+		<div class="container mt-4">{% block content %} {% endblock %}</div>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- @format -->
+
+<div class="report-section">
+	<h3 class="section-title">
+		<i class="fas fa-chart-line mr-3 text-primary"></i>Academic Performance
+	</h3>
+	<div class="row">
+		{% for record in user.results %}
+		<div class="col-md-4 mb-3">
+			<div class="card shadow-sm border-0" style="border-radius: 15px">
+				<div class="card-body">
+					<h5 class="font-weight-bold">{{ record.subject_name }}</h5>
+					<hr />
+					<p><strong>CA:</strong> {{ record.ca_score }}</p>
+					<p><strong>Exam:</strong> {{ record.final_score }}</p>
+					<span class="badge badge-primary"
+						>GPA: {{ record.semester_gpa }}</span
+					>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>

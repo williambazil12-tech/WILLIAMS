@@ -1,0 +1,104 @@
+<!-- @format -->
+
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block
+content %}
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<div class="card shadow-lg border-0" style="border-radius: 20px">
+				<div class="card-body p-5">
+					<h2 class="text-center font-weight-bold mb-4">Create Account</h2>
+					<form method="POST">
+						<div class="form-group">
+							<label class="font-weight-bold">Identify Your Role</label>
+							<select
+								name="user_type"
+								id="user_type"
+								class="form-control"
+								onchange="toggleFields()"
+								style="border-radius: 10px">
+								<option value="student">Student</option>
+								<option value="visitor">Visitor</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label class="font-weight-bold">Full Name</label>
+							<input
+								type="text"
+								name="firstName"
+								class="form-control"
+								required />
+						</div>
+
+						<div class="form-group" id="reg_group">
+							<label class="font-weight-bold">Registration Number</label>
+							<input
+								type="text"
+								name="reg_number"
+								id="reg_number"
+								class="form-control" />
+						</div>
+
+						<div class="form-group">
+							<label class="font-weight-bold">Email Address</label>
+							<input
+								type="email"
+								name="email"
+								class="form-control"
+								placeholder="name@example.com"
+								required />
+						</div>
+
+						<div class="form-group">
+							<label class="font-weight-bold">Password</label>
+							<input
+								type="password"
+								name="password"
+								class="form-control"
+								placeholder="Min 7 characters"
+								required />
+						</div>
+
+						<div class="form-group">
+							<label class="font-weight-bold">Confirm Password</label>
+							<input
+								type="password"
+								class="form-control"
+								id="password_confirm"
+								name="password_confirm"
+								placeholder="Repeat your password"
+								required />
+						</div>
+
+						<button
+							type="submit"
+							class="btn btn-primary btn-block py-3 mt-4"
+							style="border-radius: 10px; font-weight: 700">
+							START EXPLORING
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function toggleFields() {
+		var userType = document.getElementById('user_type').value;
+		var regGroup = document.getElementById('reg_group');
+		var regInput = document.getElementById('reg_number');
+
+		if (userType === 'visitor') {
+			regGroup.style.display = 'none';
+			regInput.required = false;
+		} else {
+			regGroup.style.display = 'block';
+			regInput.required = true;
+		}
+	}
+	// Initialize on load
+	window.onload = toggleFields;
+</script>
+{% endblock %}
