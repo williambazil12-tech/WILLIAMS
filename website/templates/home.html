@@ -23,6 +23,24 @@
 	.profile-card:hover {
 		transform: translateY(-5px);
 	}
+	/* Ensures captions look good on small screens */
+	@media (max-width: 768px) {
+		.carousel-caption h5 {
+			font-size: 1.1rem;
+			background: rgba(
+				0,
+				0,
+				0,
+				0.5
+			); /* Adds a dark background for readability on mobile */
+			border-radius: 5px;
+			display: inline-block;
+			padding: 5px 10px;
+		}
+		.carousel-item img {
+			height: 300px;
+		}
+	}
 </style>
 
 <div class="container">
@@ -65,6 +83,7 @@
 				>
 			</div>
 		</div>
+
 		<div class="col-md-7">
 			<div
 				id="personalCarousel"
@@ -86,7 +105,7 @@
 							src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97"
 							class="d-block w-100"
 							alt="Programming" />
-						<div class="carousel-caption d-none d-md-block">
+						<div class="carousel-caption">
 							<h5>Software Development</h5>
 						</div>
 					</div>
@@ -96,7 +115,7 @@
 							src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b"
 							class="d-block w-100"
 							alt="Cybersecurity" />
-						<div class="carousel-caption d-none d-md-block">
+						<div class="carousel-caption">
 							<h5>IT & Hardware Systems</h5>
 						</div>
 					</div>
@@ -106,7 +125,7 @@
 							src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05"
 							class="d-block w-100"
 							alt="Aviation" />
-						<div class="carousel-caption d-none d-md-block">
+						<div class="carousel-caption">
 							<h5>Aviation Passion</h5>
 						</div>
 					</div>
@@ -115,30 +134,10 @@
 						<img
 							src="{{ url_for('static', filename='willy.jpg') }}"
 							class="d-block w-100"
-							alt="William Bazil - Pilot and CEO"
-							style="object-position: top; height: 400px; object-fit: cover" />
-					</div>
-					<div>
-						<a
-							class="carousel-control-prev"
-							href="#personalCarousel"
-							role="button"
-							data-slide="prev">
-							<span
-								class="carousel-control-prev-icon"
-								aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a
-							class="carousel-control-next"
-							href="#personalCarousel"
-							role="button"
-							data-slide="next">
-							<span
-								class="carousel-control-next-icon"
-								aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						</a>
+							alt="William Bazil" />
+						<div class="carousel-caption">
+							<h5>Pilot & Founder</h5>
+						</div>
 					</div>
 				</div>
 
