@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path, getenv  # Import getenv
 from dotenv import load_dotenv # Import load_dotenv
 from flask_login import LoginManager
+from datetime import timedelta
 
 # Load the .env file
 load_dotenv()
@@ -12,6 +13,9 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = getenv('SECRET_KEY', 'mwanza_pilot_key')
+
+    app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=30)
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=30)
 
     # Construct TiDB Connection String
     DB_USER = getenv('DB_USER')
